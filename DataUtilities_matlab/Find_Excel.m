@@ -21,7 +21,7 @@ Monkey = xds.meta.monkey;
 excel_name = strcat(Date, '_', Monkey, '_', Task);
 
 % File path
-file_path = strcat('C:\Users\rhpow\Documents\Work\Northwestern\Excel_Data\window_trial_gocue_2\Max_Targets\');
+file_path = strcat('C:\Users\rhpow\Documents\Work\Northwestern\Excel_Data\window_trial_gocue\Sorted\');
 % Files & folders
 dir_path = dir(file_path);
 % Table of only files

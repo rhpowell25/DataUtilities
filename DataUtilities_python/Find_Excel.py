@@ -24,7 +24,7 @@ def Find_Excel(xds):
     excel_name = trial_date + '_' + monkey_name + '_' + trial_task
     
     # File path
-    file_path = 'C:/Users/rhpow/Documents/Work/Northwestern/Excel_Data/window_trial_gocue_2/Max_Targets/' 
+    file_path = 'C:/Users/rhpow/Documents/Work/Northwestern/Excel_Data/window_trial_gocue/Sorted/' 
     # Files & folders
     dir_path = os.listdir(file_path)
     # Table of only files

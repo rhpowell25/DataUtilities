@@ -1,4 +1,4 @@
-function [xds] = Load_XDS(Monkey, Date, Task, Morn_vs_Noon)
+function [xds] = Load_XDS(Monkey, Date, Task, Sorted, Morn_vs_Noon)
 
 %% Define the file location
 base_xds_dir = strcat('C:\Users\rhpow\Documents\Work\Northwestern\Monkey_Data\', Monkey, '\', Date, '\');
@@ -18,6 +18,15 @@ end
 % Only look at the selected task
 task_idx = contains(xds_names, Task);
 xds_names = xds_names(task_idx);
+
+% Sorted vs unsorted
+if Sorted == 1
+    sorted_idxs = contains(xds_names, '-s');
+    xds_names = xds_names(sorted_idxs);
+else
+    unsorted_idxs = ~contains(xds_names, '-s');
+    xds_names = xds_names(unsorted_idxs);
+end
 
 % Identify the morning or afternoon file
 if strcmp(Morn_vs_Noon, 'Morn') || strcmp(Morn_vs_Noon, 'Pre')

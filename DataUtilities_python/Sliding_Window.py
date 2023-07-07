@@ -7,9 +7,9 @@ class Sliding_Window():
         
         #%% Slide a window across the length of the array
         # Define the output variables
-        self.sliding_array = [[] for ii in range(len(array))]
-        self.array_idxs = [[] for ii in range(len(array))]
-        self.sliding_avg = np.zeros(len(array))
+        sliding_array = [[] for ii in range(len(array))]
+        array_idxs = [[] for ii in range(len(array))]
+        sliding_avg = np.zeros(len(array))
         
         # Initialize the counters
         tt = 0
@@ -19,13 +19,16 @@ class Sliding_Window():
         half_window = round(window_size / 2)
         
         for ii in range(len(array)):
-            self.sliding_array[tt] = array[cc - half_window:cc + half_window]
-            self.array_idxs[tt] = np.linspace(cc - half_window, cc + half_window, int(window_size) + 1)
-            self.sliding_avg[tt] = np.mean(array[cc - half_window:cc + half_window])
+            sliding_array[tt] = array[cc - half_window:cc + half_window + 1]
+            array_idxs[tt] = np.linspace(cc - half_window, cc + half_window, int(window_size) + 1)
+            sliding_avg[tt] = np.mean(array[cc - half_window:cc + half_window + 1])
             tt = tt + 1
             cc = cc + round(step_size)
             
-               
+        #%% Save the necessary variables
+        self.sliding_avg = sliding_avg
+        self.sliding_array = sliding_array
+        self.array_idxs = array_idxs
 
 
 

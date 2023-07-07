@@ -8,6 +8,59 @@ class File_Details():
     
         #%% Define the experiments that will be examined 
         
+        if Monkey == 'Tot':
+            if Drug_Choice == 'Cyp':
+                # Display the Drug name
+                print('Cyproheptadine:')
+                Dates = [[] for ii in range(1)]
+                Tasks = [[] for ii in range(1)]
+                Drug_Dose = [[] for ii in range(1)]
+                Dates[0] = '20230419'
+                Tasks[0] = 'PGKG'
+                Drug_Dose[0] = '0.52'
+                
+            if Drug_Choice == 'Caff':
+                # Display the Drug name
+                print('Caffeine:')
+                Dates = [[] for ii in range(2)]
+                Tasks = [[] for ii in range(2)]
+                Drug_Dose = [[] for ii in range(2)]
+                Dates[0] = '20230414'
+                Tasks[0] = 'PGKG'
+                Drug_Dose[0] = '5.58'
+                Dates[1] = '20230428'
+                Tasks[1] = 'PGKG'
+                Drug_Dose[1] = '6.64'
+                
+            if Drug_Choice == 'Lex':
+                # Display the Drug name
+                print('Escitalopram:')
+                Dates = [[] for ii in range(3)]
+                Tasks = [[] for ii in range(3)]
+                Drug_Dose = [[] for ii in range(3)]
+                Dates[0] = '20230317'
+                Tasks[0] = 'KG'
+                Drug_Dose[0] = '1.25'
+                Dates[1] = '20230317'
+                Tasks[1] = 'PG'
+                Drug_Dose[1] = '1.25'
+                Dates[2] = '20230425'
+                Tasks[2] = 'PGKG'
+                Drug_Dose[2] = '1.3'
+                
+            if Drug_Choice == 'Con':
+                # Display the Drug name
+                print('Control:')
+                Dates = [[] for ii in range(2)]
+                Tasks = [[] for ii in range(2)]
+                Drug_Dose = [[] for ii in range(2)]
+                Dates[0] = '20230308'
+                Tasks[0] = 'PG'
+                Drug_Dose[0] = 'N/A'
+                Dates[1] = '20230411'
+                Tasks[1] = 'PGKG'
+                Drug_Dose[1] = 'N/A'
+
         if Monkey == 'Pancake':
             if Drug_Choice == 'Con':
                 # Display the Drug name

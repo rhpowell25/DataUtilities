@@ -1,13 +1,12 @@
-# -*- coding: utf-8 -*-
-
+#%% Import basic packages
 import glob
 import os
 from xds import lab_data
         
 #%% Load XDS
-def Load_XDS(Monkey, Date, Task, Morn_vs_Noon):
+def Load_XDS(Monkey, Date, Task, Sorted, Morn_vs_Noon):
 
-    ## Define the file location
+    # Define the file location
     base_path = 'C:/Users/rhpow/Documents/Work/Northwestern/Monkey_Data/' + Monkey + '/' + Date + '/'
     if Morn_vs_Noon == 'Trimmed':
         base_path = base_path + 'Trimmed/'
@@ -26,6 +25,12 @@ def Load_XDS(Monkey, Date, Task, Morn_vs_Noon):
         # Only look at the selected task
         xds_names = file_names
         file_name = xds_names
+
+    # Sorted vs unsorted
+    if Sorted == 1:
+        xds_names = list(filter(lambda x: '-s' in x, xds_names))
+    else:
+        xds_names = list(filter(lambda x: '-s' not in x, xds_names))
 
     # Identify the morning or afternoon file
     if Morn_vs_Noon == 'Morn':

@@ -23,14 +23,12 @@ def Process_XDS(xds_morn, xds_noon, Match_The_Targets):
         target_centers_noon = targets_noon.target_centers
         
         from Match_Targets import Match_Targets
-        
         Matching_Idxs = Match_Targets(target_dirs_morn, target_dirs_noon, target_centers_morn, target_centers_noon)
         Matching_Idxs_Morn = Matching_Idxs.Matching_Idxs_Morn
         Matching_Idxs_Noon = Matching_Idxs.Matching_Idxs_Noon
         
         # Only use the info of targets conserved between morning & noon
         if not all(ii is True for ii in Matching_Idxs_Morn) or not all(ii is True for ii in Matching_Idxs_Noon):
-            
             print('Uneven Targets Between Morning & Afternoon')
             Mismatched_Idxs_Morn = [not ii for ii in Matching_Idxs_Morn]
             Mismatched_Idxs_Noon = [not ii for ii in Matching_Idxs_Noon]

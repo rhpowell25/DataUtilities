@@ -1,15 +1,14 @@
-function [max_tgt_rewarded_idxs] = Find_Max_Indexes(xds)
+function [max_tgt_rewarded_idxs] = Find_Max_Indexes(trial_table)
 
 %% Extract the trial directions
-target_dir_idx = xds.trial_target_dir;
+target_dir_idx = trial_table.tgtDir;
 unique_target_dirs = unique(target_dir_idx);
 
 % Counts the number of directions used
 num_dirs = length(unique_target_dirs);
 
 % Pull the target centers of each succesful trial
-tgt_Center_header = contains(xds.trial_info_table_header, 'TgtDistance');
-tgt_Center_idx = cell2mat(xds.trial_info_table(:, tgt_Center_header));
+tgt_Center_idx = trial_table.TgtDistance;
 
 % Define the output variable
 max_tgt_rewarded_idxs = [];
@@ -18,7 +17,7 @@ max_tgt_rewarded_idxs = [];
 for jj = 1:num_dirs
 
     %% Indexes for all rewarded trials
-    total_rewarded_idx = find((xds.trial_result == 'R') & (target_dir_idx == unique_target_dirs(jj)));
+    total_rewarded_idx = find((strcmp(trial_table.result, 'R')) & (target_dir_idx == unique_target_dirs(jj)));
     rewarded_tgts = tgt_Center_idx(total_rewarded_idx);
 
     %% Find the max target

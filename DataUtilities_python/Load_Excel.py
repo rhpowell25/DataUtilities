@@ -6,7 +6,7 @@ import pandas as pd
 def Load_Excel(Date, Monkey, Task):
     
     #%% Define the file location
-    base_excel_dir = 'C:/Users/rhpow/Documents/Work/Northwestern/Excel_Data/window_trial_gocue_2/'
+    base_excel_dir = 'C:/Users/rhpow/Documents/Work/Northwestern/Excel_Data/window_trial_gocue/'
     
     # Which targets do you want the mnovement phase firing rate calculated from? ('Max', 'Min', 'All')
     tgt_mpfr = 'Max'
