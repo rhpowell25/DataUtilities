@@ -5,7 +5,7 @@ function [Bin_Params] = Binning_Parameters
 before_event = 3;
 after_event = 3;
 
-% Bin size (sec.)
+% Neural bin size (sec.)
 bin_size = 0.04;
 
 % Size of floating average window (bins)
@@ -21,7 +21,7 @@ step_size = 1;
 Bin_Params = struct( ...
     'before_event', before_event, ... % Time before event (sec.)
     'after_event', after_event, ... % Time after event (sec.)
-    'bin_size', bin_size, ... % Bin size (sec.)
+    'bin_size', bin_size, ... % Neural bin size (sec.)
     'half_window_size', half_window_size, ... % Bins
     'half_window_length', half_window_length, ... % Half length of floating average window (sec.)
     'step_size', step_size); % Bins

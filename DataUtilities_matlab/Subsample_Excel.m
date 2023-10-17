@@ -32,6 +32,25 @@ if isfield(Sampling_Params,'ISI_quality') && ~strcmp(Sampling_Params.ISI_quality
     temp_excel = temp_excel(ISI_quality_idx,:);
 end
 
+% Subsample according to unit's relation
+if isfield(Sampling_Params,'unit_relation') && ~strcmp(Sampling_Params.unit_relation, 'All')
+    bsfr_morn = temp_excel.bsfr_morn;
+    bsfr_noon = temp_excel.bsfr_noon;
+    TgtHold_morn = temp_excel.TgtHold_morn;
+    TgtHold_noon = temp_excel.TgtHold_noon;
+    grasp_mod_morn = TgtHold_morn - bsfr_morn;
+    grasp_mod_noon = TgtHold_noon - bsfr_noon;
+    if strcmp(Sampling_Params.unit_relation, 'Reach')
+        unit_relation_idx_morn = find(grasp_mod_morn < 0);
+        unit_relation_idx_noon = find(grasp_mod_noon < 0);
+    elseif strcmp(Sampling_Params.unit_relation, 'Grasp')
+        unit_relation_idx_morn = find(grasp_mod_morn >= 0);
+        unit_relation_idx_noon = find(grasp_mod_noon >= 0);
+    end
+    unit_relation_idx = intersect(unit_relation_idx_morn, unit_relation_idx_noon);
+    temp_excel = temp_excel(unit_relation_idx,:);
+end
+
 % Subsample according to change in depth of modulation
 if isfield(Sampling_Params,'depth_change') && ~isnan(Sampling_Params.depth_change)
     depth_change = temp_excel.depth_noon - temp_excel.depth_morn;
@@ -117,9 +136,19 @@ end
 
 % Re-add the drug dose
 temp_excel.drug_dose_mg_per_kg = xds_excel.drug_dose_mg_per_kg(1:height(temp_excel));
+% Re-add the EMG
+if contains('EMG_names', temp_excel.Properties.VariableNames)
+    temp_excel.EMG_names = xds_excel.EMG_names(1:height(temp_excel));
+    temp_excel.EMG_amp_morn = xds_excel.EMG_amp_morn(1:height(temp_excel));
+    temp_excel.EMG_amp_noon = xds_excel.EMG_amp_noon(1:height(temp_excel));
+    temp_excel.EMG_amp_err_morn = xds_excel.EMG_amp_err_morn(1:height(temp_excel));
+    temp_excel.EMG_amp_err_noon = xds_excel.EMG_amp_err_noon(1:height(temp_excel));
+    temp_excel.EMG_amp_t_test = xds_excel.EMG_amp_t_test(1:height(temp_excel));
+    temp_excel.EMG_amp_wilcoxon = xds_excel.EMG_amp_wilcoxon(1:height(temp_excel));
+    temp_excel.EMG_amp_perc = xds_excel.EMG_amp_perc(1:height(temp_excel));
+    temp_excel.EMG_amp_cohen_d = xds_excel.EMG_amp_cohen_d(1:height(temp_excel));
+end
 xds_excel = temp_excel;
-
-
 
 
 

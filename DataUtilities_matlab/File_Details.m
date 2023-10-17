@@ -7,46 +7,83 @@ Dates = strings;
 Tasks = strings;
 Drug_Dose = struct([]);
 
+if strcmp(Monkey, 'Mojito')
+    if strcmp(Drug_Choice, 'Con')
+        % Display the Drug name
+        disp('Control:');
+        Dates{1,1} = '20230819'; 
+        Tasks{1,1} = 'PG';
+        Drug_Dose{1,1} = 'N/A';
+    end
+    if strcmp(Drug_Choice, 'Lex')
+        % Display the Drug name
+        disp('Lexapro:');
+        Dates{1,1} = '20230826';
+        Tasks{1,1} = 'PG';
+        Drug_Dose{1,1} = '1.01';
+    end
+    if strcmp(Drug_Choice, 'Cyp')
+        % Display the Drug name
+        disp('Cyproheptadine:');
+        %Dates{1,1} = '20230830';
+        %Tasks{1,1} = 'PG';
+        %Drug_Dose{1,1} = '0.59';
+        Dates{1,1} = '20230913';
+        Tasks{1,1} = 'PG';
+        Drug_Dose{1,1} = '0.78';
+    end
+    if strcmp(Drug_Choice, 'Caff')
+        % Display the Drug name
+        disp('Caffeine:');
+        Dates{1,1} = '20230902';
+        Tasks{1,1} = 'PG';
+        Drug_Dose{1,1} = '6.11';
+    end
+end
+
 if strcmp(Monkey, 'Tot')
     if strcmp(Drug_Choice, 'Cyp')
         % Display the Drug name
         disp('Cyproheptadine:');
         Dates{1,1} = '20230419';
-        Tasks{1,1} = 'PGKG'; % 1 = KG; 2 = PG
+        Tasks{1,1} = 'KGPG'; % 1 = KG; 2 = PG
         Drug_Dose{1,1} = '0.52';
     end
     if strcmp(Drug_Choice, 'Caff')
         % Display the Drug name
         disp('Caffeine:');
         Dates{1,1} = '20230414';
-        Tasks{1,1} = 'PGKG'; % 1 = KG; 2 = PG
+        Tasks{1,1} = 'KGPG'; % 1 = KG; 2 = PG
         Drug_Dose{1,1} = '5.58';
         Dates{2,1} = '20230428';
-        Tasks{2,1} = 'PGKG'; % 1 = KG; 2 = PG
+        Tasks{2,1} = 'KGPG'; % 1 = KG; 2 = PG
         Drug_Dose{2,1} = '6.64';
     end
     if strcmp(Drug_Choice, 'Lex')
         % Display the Drug name
         disp('Lexapro:');
+        Dates{1,1} = '20230930';
+        Tasks{1,1} = 'WS';
+        Drug_Dose{1,1} = '1.28';
         %Dates{1,1} = '20230317';
         %Tasks{1,1} = 'KG';
         %Drug_Dose{1,1} = '1.25';
         %Dates{2,1} = '20230317';
         %Tasks{2,1} = 'PG';
         %Drug_Dose{2,1} = '1.25';
-        Dates{1,1} = '20230425';
-        Tasks{1,1} = 'PGKG'; % 1 = KG; 2 = PG
-        Drug_Dose{1,1} = '1.3';
+        %Dates{3,1} = '20230425';
+        %Tasks{3,1} = 'KGPG'; % 1 = KG; 2 = PG
+        %Drug_Dose{3,1} = '1.3';
     end
     if strcmp(Drug_Choice, 'Con')
         % Display the Drug name
         disp('Control:');
-        %Dates{1,1} = '20230308';
-        %Tasks{1,1} = 'PG';
-        %Drug_Dose{1,1} = 'N/A';
-        Dates{1,1} = '20230411'; 
-        Tasks{1,1} = 'PGKG'; % 1 = PG; 2 = KG
+        Dates{1,1} = '20230308';
+        Tasks{1,1} = 'PG';
         Drug_Dose{1,1} = 'N/A';
+        Dates{2,1} = '20230411'; 
+        Tasks{2,1} = 'PGKG'; % 1 = PG; 2 = KG
+        Drug_Dose{2,1} = 'N/A';
     end
 end
 
