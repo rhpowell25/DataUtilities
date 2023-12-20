@@ -40,7 +40,7 @@ if ischar(File_Tag)
             File_suffix{ii,1} = extractAfter(xds_names{ii,1}, Task);
         end
         xds_idx = find(contains(File_suffix, File_Tag));
-        end
+    end
 elseif isnumeric(File_Tag)
     File_suffix = strings;
     for ii = 1:length(xds_names)
