@@ -5,9 +5,6 @@ function [xds_excel] = Subsample_Excel(xds_excel, Sampling_Params)
 % Which stability metric do you want to use ('Wave' or "Nonlin')
 stability_choice = 'Nonlin';
 
-% What statistical measure do you want to use ('T-Test', 'Wilcox')
-stat_test = 'T-Test';
-
 temp_excel = xds_excel;
 
 %% Subsample through each of the sampling paramaters
@@ -15,9 +12,9 @@ temp_excel = xds_excel;
 % Subsample according to unit quality
 if isfield(Sampling_Params,'unit_quality') && ~strcmp(Sampling_Params.unit_quality, 'All')
     if strcmp(stability_choice, 'Nonlin')
-        unit_quality_idx = find(temp_excel.nonlin_p_value > 0.05);
+        unit_quality_idx = find(temp_excel.nonlin_p_val > 0.05);
     elseif strcmp(stability_choice, 'Wave')
-        unit_quality_idx = find(temp_excel.wave_p_value > 0.05);
+        unit_quality_idx = find(temp_excel.wave_p_val > 0.05);
     end
     temp_excel = temp_excel(unit_quality_idx,:);
 end
@@ -88,25 +85,15 @@ end
 
 % Subsample according to modulation significance
 if isfield(Sampling_Params,'mod_sig') && ~strcmp(Sampling_Params.mod_sig, 'All')
-    if strcmp(stat_test, 'T-Test')
-        mod_sig_idx_morn = find(temp_excel.mod_t_test_morn <= 0.05);
-        mod_sig_idx_noon = find(temp_excel.mod_t_test_noon <= 0.05);
-        mod_sig_idx = unique([mod_sig_idx_morn' mod_sig_idx_noon'])';
-    elseif strcmp(stat_test, 'Wilcox')
-        mod_sig_idx_morn = find(temp_excel.mod_wilcoxon_morn <= 0.05);
-        mod_sig_idx_noon = find(temp_excel.mod_wilcoxon_noon <= 0.05);
-        mod_sig_idx = unique([mod_sig_idx_morn' mod_sig_idx_noon'])';
-    end
+    mod_sig_idx_morn = find(temp_excel.mod_p_val_morn <= 0.05);
+    mod_sig_idx_noon = find(temp_excel.mod_p_val_noon <= 0.05);
+    mod_sig_idx = unique([mod_sig_idx_morn' mod_sig_idx_noon'])';
     temp_excel = temp_excel(mod_sig_idx,:);
 end
 
 % Subsample according to depth of modulation changes
 if isfield(Sampling_Params,'depth_sig') && ~strcmp(Sampling_Params.depth_sig, 'All')
-    if strcmp(stat_test, 'T-Test')
-        depth_sig_idx = find(temp_excel.depth_t_test <= 0.05);
-    elseif strcmp(stat_test, 'Wilcox')
-        depth_sig_idx = find(temp_excel.depth_wilcoxon <= 0.05);
-    end
+    depth_sig_idx = temp_excel.depth_p_val <= 0.05;
     temp_excel = temp_excel(depth_sig_idx,:);
 end
 
