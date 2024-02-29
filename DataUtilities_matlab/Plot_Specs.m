@@ -1,4 +1,4 @@
-function [Plot_Params] = Plot_Parameters
+function [Plot_Params] = Plot_Specs
 
 %% Font & plotting specifications
 title_font_size = 14;
