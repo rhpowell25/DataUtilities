@@ -1,10 +1,10 @@
-function [xds] = Merge_XDS(Monkey, Date, Task, Sorted, File_Tags, Save_Merge)
+function [xds] = Merge_XDS(xds_one, xds_two, Save_Merge)
 
 %% Load the xds files
-
+%[xds] = Merge_XDS(Monkey, Date, Task, Sorted, File_Tags, Save_Merge)
 % Load the xds files
-xds_one = Load_XDS(Monkey, Date, Task, Sorted, File_Tags{1});
-xds_two = Load_XDS(Monkey, Date, Task, Sorted, File_Tags{2});
+%xds_one = Load_XDS(Monkey, Date, Task, Sorted, File_Tags{1});
+%xds_two = Load_XDS(Monkey, Date, Task, Sorted, File_Tags{2});
 
 %% Initialize the output change the meta data
 
